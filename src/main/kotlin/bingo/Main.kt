@@ -1,4 +1,6 @@
 package bingo
+import de.m3y.kformat.Table
+import de.m3y.kformat.table
 import java.util.*
 import java.io.File
 
@@ -67,6 +69,23 @@ fun jugar() {
     }
 }
 
+/**
+ * Crea una tabla con Kformat para mostrar el resultado de la simulación
+ */
+fun tablaFormato(cartonesEnJuego: MutableList<Carton>){
+    table {
+        header("Nº Cartón","Líneas", "Bingo")
+
+        for(i in cartonesEnJuego.size) {
+            row(cartonesEnJuego[i], "a", "foo")
+        }
+
+        hints {
+            alignment("Nº Cartón", Table.Hints.Alignment.LEFT)
+            borderStyle = Table.BorderStyle.SINGLE_LINE
+        }
+    }.render(StringBuilder())
+}
 
 /**
  * Muestra el menu

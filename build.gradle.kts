@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
+    implementation("de.m3y.kformat:kformat:0.11")
 }
 
 tasks.test {
