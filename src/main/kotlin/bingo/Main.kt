@@ -76,8 +76,10 @@ fun tablaFormato(cartonesEnJuego: MutableList<Carton>){
     table {
         header("Nº Cartón","Líneas", "Bingo")
 
-        for(i in cartonesEnJuego.size) {
-            row(cartonesEnJuego[i], "a", "foo")
+        var cont = 1;
+        while(cont <= cartonesEnJuego.size){
+            row(cont.toString(), cartonesEnJuego[cont].lineasTachadas)
+            cont++
         }
 
         hints {

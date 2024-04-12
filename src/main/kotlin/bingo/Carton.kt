@@ -8,7 +8,7 @@ package bingo
 class Carton(val numeroCarton: Int) {
     private val matriz: Array<Array<String>> = Array(3) { Array(9) { "  " } }
     private var numeros: MutableList<Int> = mutableListOf()
-    private var lineasTachadas: Int = 0
+    var lineasTachadas: Int = 0
 
     init {
         try {
