@@ -12,6 +12,7 @@ repositories {
 dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     implementation("de.m3y.kformat:kformat:0.11")
+    implementation("com.github.ajalt.clikt:clikt:3.0.0")
 }
 
 tasks.test {

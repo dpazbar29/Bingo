@@ -22,7 +22,7 @@ fun jugar() {
         }
 
         var hayBingo = false
-
+        var cartonGanador: Int = 0
         while (!hayBingo) {
             try {
                 Juego.pasarRonda()
@@ -45,8 +45,7 @@ fun jugar() {
                     if (carton.verificarLineas()) {
                         if (carton.verificarBingo()) {
                             hayBingo = true
-                            println("BINGO EN CARTÓN ${carton.numeroCarton}")
-                            println()
+                            cartonGanador = carton.numeroCarton
                         }
                     }
                 }
@@ -55,6 +54,7 @@ fun jugar() {
 
             }
         }
+        println(tablaFormato(cartonesEnJuego,cartonGanador ))
 
         if (Juego.repetirSimulacion()) {
             Bombo.reiniciarBombo()
@@ -72,21 +72,24 @@ fun jugar() {
 /**
  * Crea una tabla con Kformat para mostrar el resultado de la simulación
  */
-fun tablaFormato(cartonesEnJuego: MutableList<Carton>){
-    table {
-        header("Nº Cartón","Líneas", "Bingo")
+fun tablaFormato(cartonesEnJuego: MutableList<Carton>, cartonBingo: Int): String {
+    val stringBuilder = StringBuilder()
+    stringBuilder.append(
+        table {
+            header("Nº Cartón", "Líneas", "Bingo")
 
-        var cont = 1;
-        while(cont <= cartonesEnJuego.size){
-            row(cont.toString(), cartonesEnJuego[cont].lineasTachadas)
-            cont++
-        }
+            for (cont in 0 until cartonesEnJuego.size) {
+                val bingo = if ((cont + 1) == cartonBingo) "Si" else "No"
+                row((cont + 1).toString(), cartonesEnJuego[cont].lineasTachadas.toString(), bingo)
+            }
 
-        hints {
-            alignment("Nº Cartón", Table.Hints.Alignment.LEFT)
-            borderStyle = Table.BorderStyle.SINGLE_LINE
-        }
-    }.render(StringBuilder())
+            hints {
+                alignment("Nº Cartón", Table.Hints.Alignment.LEFT)
+                borderStyle = Table.BorderStyle.SINGLE_LINE
+            }
+        }.render()
+    )
+    return stringBuilder.toString()
 }
 
 /**
