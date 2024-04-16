@@ -1,7 +1,6 @@
 package bingo
-import java.util.*
 import java.io.File
-
+import java.util.*
 
 /**
  * Iniciar la simulación del bingo
@@ -50,7 +49,6 @@ fun jugar() {
                 }
             } catch (e: Exception) {
                 println("Error: ${e.message}")
-
             }
         }
 
@@ -66,7 +64,6 @@ fun jugar() {
         println("Error: ${e.message}")
     }
 }
-
 
 /**
  * Muestra el menu
@@ -89,7 +86,7 @@ fun mostrarMenuLogin(baseDatos: File): Boolean {
                 val contrasena = readlnOrNull().orEmpty()
                 registro(nombreUsuario, contrasena, baseDatos)
             }
-            2 ->  {
+            2 -> {
                 print("Nombre de usuario: ")
                 val nombreUsuario = readlnOrNull().orEmpty()
                 print("Contraseña: ")
@@ -114,6 +111,10 @@ fun mostrarMenuLogin(baseDatos: File): Boolean {
 
 fun main() {
     val archivoBaseDatos = crearArchivoBaseDatos("base_datos.txt")
+
+    GestorArchivos.crearDirectorios()
+    GestorArchivos.crearConfigSiNoExiste()
+    val logFile = GestorArchivos.crearArchivoLog()
 
     val sesionIniciada = mostrarMenuLogin(archivoBaseDatos)
     if (sesionIniciada) {
