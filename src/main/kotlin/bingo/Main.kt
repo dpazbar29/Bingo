@@ -109,7 +109,8 @@ fun mostrarMenuLogin(baseDatos: File): Boolean {
     }
 }
 
-fun main() {
+fun main(args: Array<String>) {
+    GestorFormato().main(args)
     val archivoBaseDatos = crearArchivoBaseDatos("base_datos.txt")
 
     GestorArchivos.crearDirectorios()

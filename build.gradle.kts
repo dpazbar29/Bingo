@@ -19,8 +19,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.14.9")
-    runtimeOnly("com.github.ajalt.clikt:clikt:4.4.0")
-
+    implementation("com.github.ajalt.clikt:clikt:4.4.0")
+    implementation("de.m3y.kformat:kformat:0.11")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 }
 
